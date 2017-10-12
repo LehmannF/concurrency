@@ -1,15 +1,19 @@
 #include "Terrain.h"
 
-
-
 #define _ROWS 128
 #define _COLUMNS 512
 
-using Row = std::vector<char>;
+using Row = std::vector<Tile>;
 using Matrix = std::vector<Row>;
 
 Terrain::Terrain() {
-  Matrix terrain(_COLUMNS, Row(_ROWS));
+  this->terrain = Matrix(_COLUMNS, Row(_ROWS));
+
+  // for (int i = 0; i < _Rows; ++i)
+  //   for (int j = 0; j < _COLUMNS; ++j)
+  //     te
+
+
 }
 
 Terrain::Terrain(const Terrain& terrain){
@@ -23,3 +27,5 @@ bool Terrain::isBorder(int x, int y) {
     return true;
   return false;
 }
+
+  
