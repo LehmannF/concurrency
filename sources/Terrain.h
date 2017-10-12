@@ -11,6 +11,8 @@ class Terrain
   Terrain();
   Terrain(const Terrain& terrain);
   bool isBorder(int x, int y);
+  int getNumberOfRows();
+  int getNumberOfColumns();
   
  private:
   std::vector<std::vector<Tile> > terrain;

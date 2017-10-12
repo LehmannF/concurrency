@@ -10,12 +10,6 @@ using Matrix = std::vector<Row>;
 
 Terrain::Terrain() {
   this->terrain = Matrix(_COLUMNS, Row(_ROWS));
-
-  // for (int i = 0; i < _Rows; ++i)
-  //   for (int j = 0; j < _COLUMNS; ++j)
-  //     te
-
-
 }
 
 Terrain::Terrain(const Terrain& terrain){
@@ -30,4 +24,11 @@ bool Terrain::isBorder(int x, int y) {
   return false;
 }
 
-  
+
+int Terrain::getNumberOfRows() {
+  return _ROWS;
+}
+
+int Terrain::getNumberOfColumns() {
+  return _COLUMNS;
+}

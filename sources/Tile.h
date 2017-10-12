@@ -14,6 +14,10 @@ class Tile
 
  public:
   Tile();
+  Element getElement();
+  void setElement(Element);
+  void lock();
+  void unlock();
   
 };
 
