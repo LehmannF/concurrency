@@ -8,6 +8,7 @@ class Terrain
 
  public:
   Terrain();
+  bool isBorder(int x, int y);
   
  private:
   std::vector<std::vector<char> > _terrain;

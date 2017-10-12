@@ -12,3 +12,10 @@ Terrain::Terrain() {
   Matrix terrain(_COLUMNS, Row(_ROWS));
 }
 
+bool Terrain::isBorder(int x, int y) {
+  if (x==_COLUMNS || y== _ROWS)
+    return true;
+  if ((y==-1 && x>=2) || (y>=2 && x==-1) )
+    return true;
+  return false;
+}
