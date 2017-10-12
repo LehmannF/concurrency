@@ -1,6 +1,8 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
 
+#include <vector>
+
 class Terrain
 {
 
@@ -8,8 +10,7 @@ class Terrain
   Terrain();
   
  private:
-  int _columns;
-  int _rows;
+  std::vector<std::vector<char> > _terrain;
   
 };
 
