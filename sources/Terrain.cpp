@@ -1,4 +1,6 @@
 #include "Terrain.h"
+#include "Tile.h"
+
 
 #define _ROWS 128
 #define _COLUMNS 512

@@ -2,6 +2,7 @@
 #define TERRAIN_H
 
 #include <vector>
+#include "Tile.h"
 
 class Terrain
 {
@@ -12,8 +13,8 @@ class Terrain
   bool isBorder(int x, int y);
   
  private:
-  std::vector<std::vector<char> > terrain;
-  
+  std::vector<std::vector<Tile> > terrain;
+
 };
 
 #endif /* TERRAIN_H */

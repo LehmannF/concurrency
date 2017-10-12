@@ -1,2 +1,2 @@
 
-enum Element { Person Empty Obstacle };
+enum Element { Person, Empty, Obstacle };

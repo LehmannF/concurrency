@@ -19,6 +19,7 @@ ADD_SUBDIRECTORY(gtest-1.8.0)
 enable_testing()
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-add_executable(Tests ${TESTS}/TerrainTests.cpp ${SOURCES}/Terrain.cpp)
-target_link_libraries(Tests gtest gtest_main)
-add_test(${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Tests ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Tests)
+# Test de terrain
+add_executable(TerrainTests ${TESTS}/TerrainTests.cpp ${SOURCES}/Terrain.cpp ${SOURCES}/Tile.cpp)
+target_link_libraries(TerrainTests gtest gtest_main)
+add_test(${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/TerrainTests ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Tests)
