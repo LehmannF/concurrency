@@ -15,9 +15,9 @@ TEST(Terrain, shouldBeAborder){
 
 TEST(Terrain, shouldNotBeAborder){
   Terrain terrain;
-  EXPECT_EQ(false, terrain.isBorder(0,0));
-  EXPECT_EQ(false, terrain.isBorder(1,0));
-  EXPECT_EQ(false, terrain.isBorder(0,1));
-  EXPECT_EQ(false, terrain.isBorder(1,1));
-  EXPECT_EQ(false, terrain.isBorder(511,1));
+  EXPECT_FALSE(terrain.isBorder(0,0));
+  EXPECT_FALSE(terrain.isBorder(1,0));
+  EXPECT_FALSE(terrain.isBorder(0,1));
+  EXPECT_FALSE(terrain.isBorder(1,1));
+  EXPECT_FALSE(terrain.isBorder(511,1));
 }
