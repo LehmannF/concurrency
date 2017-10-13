@@ -2,6 +2,7 @@
 #define TERRAIN_H
 
 #include <vector>
+#include "Tile.h"
 
 class Terrain
 {
@@ -10,6 +11,10 @@ class Terrain
   Terrain();
   Terrain(const Terrain& terrain);
   bool isBorder(int x, int y);
+  int getNumberOfRows();
+  int getNumberOfColumns();
+  Tile* getTile(int, int);
+  void addObstacle(Obstacle);
   
  private:
   std::vector<std::vector<Tile> > terrain;

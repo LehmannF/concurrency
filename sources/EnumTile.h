@@ -1,7 +1,7 @@
 #ifndef ENUMTILE_H
 #define ENUMTILE_H
 
-enum Element { Person, Empty, Obstacle };
+enum class Element { Person, Empty, Obstacle };
 
 #endif /* ENUMTILE_H */
 

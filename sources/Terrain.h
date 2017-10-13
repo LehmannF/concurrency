@@ -3,17 +3,20 @@
 
 #include <vector>
 #include "Tile.h"
+#include "Obstacle.h"
+
 
 class Terrain
 {
 
  public:
   Terrain();
-  Terrain(const Terrain& terrain);
-  bool isBorder(int x, int y);
+  Terrain(const Terrain&);
+  bool isBorder(int, int);
   int getNumberOfRows();
   int getNumberOfColumns();
-  Tile* getTile(int, int);
+  Tile *getTile(int, int);
+  void addObstacle(Obstacle);
   
  private:
   std::vector<std::vector<Tile> > terrain;
