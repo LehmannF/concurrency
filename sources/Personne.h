@@ -16,6 +16,8 @@ class Personne{
 	public:
 	Personne(Terrain& terrain);
 	
+	void run();
+	
 	bool deplacementNord();
 	bool deplacementSud();
 	bool deplacementOuest();
@@ -25,6 +27,7 @@ class Personne{
 	bool deplacementSudOuest();
 	bool deplacementSudEst();
 	double calculDistance(int x, int y);
+	double calculDistanceSortie(int x, int y);
 };
 
 #endif
