@@ -23,6 +23,30 @@ Personne::Personne(Terrain& terrain){
 	
 }
 
+void Personne::run(){
+	/*while(x != -1 && y!= -1){
+		Tile* mini=(&(*terrain).getTile(x,y));
+		distance = calculDistanceOfTwoPoint(x,y)
+		
+		if(!(*(this->terrain)).isBorder(x,y-1) && (*(*(this->terrain)).getTile(x,y-1)).getElement() != Obstacle){
+			if(calculDistanceOfTwoPoint(x,y-1) < distance ){
+				distance = calculDistanceOfTwoPoint(x,y-1);
+				mini =(&(*terrain).getTile(x,y-1))
+			}
+		}
+		
+		
+		*mini.lock()
+		if((*mini).getElement() == Empty){
+			
+		}
+		else (*mini).unlock();
+		
+		
+	}*/
+	
+}
+
 bool deplacementNord(){
 	return false;
 	}
@@ -51,9 +75,15 @@ bool deplacementSudEst(){
 double Personne::calculDistance(int x, int y){
 	return sqrt(std::pow((this->x -x),2)+std::pow((this->y -y),2));
 }
+
+double Personne::calculDistanceSortie(int x, int y){
+	return sqrt(std::pow((-1 -x),2)+std::pow((-1 -y),2));
+}
 	
 	
 // 1) Calcul de distance entre l'emplacement courant et la sortie
 // 2) Calcul de distance entre chacune des cases autour et la sortie
 // 3) Ne prendre que les cases qui ont une distance < a celle courante
 // 4) Parmis ces cases, executer le deplacement vers la 1ere possible
+
+
