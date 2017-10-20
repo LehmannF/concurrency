@@ -1,7 +1,8 @@
 #include "Personne.h"
 #include "Terrain.h"
-
+#include "EnumTile.h"
 #include <random>
+#include <iostream>
 
 #define _ROWS 128
 #define _COLUMNS 512
@@ -10,13 +11,16 @@ Personne::Personne(Terrain& terrain){
 	(*this).terrain=&terrain;
 	
 	do{
-	std::default_random_engine generator;
+	std::random_device seed;
+	std::default_random_engine generator(seed());
 	std::uniform_int_distribution<int> chooseX(0,_COLUMNS-1);
 	std::uniform_int_distribution<int> chooseY(0,_ROWS-1);
 	
 	x= chooseX(generator);
 	y= chooseY(generator);
-	} while(/* condition pour une case vide */ false);
+	} while((*(*(this->terrain)).getTile(x,y)).getElement() != Empty);
+	(*(*(this->terrain)).getTile(x,y)).setElement(Person);
+	
 }
 
 bool deplacementNord(){
