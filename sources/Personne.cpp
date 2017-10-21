@@ -7,7 +7,8 @@
 #define _ROWS 128
 #define _COLUMNS 512
 
-Personne::Personne(Terrain& terrain){
+Personne::Personne(Terrain& terrain, int id){
+	(*this).id=id;
 	(*this).terrain=&terrain;
 	
 	do{
@@ -20,6 +21,8 @@ Personne::Personne(Terrain& terrain){
 	y= chooseY(generator);
 	} while((*(*(this->terrain)).getTile(x,y)).getElement() != Element::Empty);
 	(*(*(this->terrain)).getTile(x,y)).setElement(Element::Person);
+	
+	std::cout << "Personne n°" <<id<< " implanté en x:"<<x<< " y:"<<y<<std::endl;
 	
 }
 

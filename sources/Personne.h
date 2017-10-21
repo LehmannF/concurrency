@@ -9,12 +9,13 @@ class Personne{
 	
 	private:
 	Terrain* terrain = nullptr;
+	int id;
 	
 	int x;
 	int y;
 	
 	public:
-	Personne(Terrain& terrain);
+	Personne(Terrain& terrain, int id);
 	
 	void* run();
 	
