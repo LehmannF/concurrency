@@ -18,32 +18,38 @@ Personne::Personne(Terrain& terrain){
 	
 	x= chooseX(generator);
 	y= chooseY(generator);
-	} while((*(*(this->terrain)).getTile(x,y)).getElement() != Empty);
-	(*(*(this->terrain)).getTile(x,y)).setElement(Person);
+	} while((*(*(this->terrain)).getTile(x,y)).getElement() != Element::Empty);
+	(*(*(this->terrain)).getTile(x,y)).setElement(Element::Person);
 	
 }
 
 void Personne::run(){
-	/*while(x != -1 && y!= -1){
-		Tile* mini=(&(*terrain).getTile(x,y));
-		distance = calculDistanceOfTwoPoint(x,y)
+	while(x != -1 && y!= -1){
+	  Tile* mini = terrain->getTile(x,y);
+		double distance = calculDistanceSortie(x,y);
+
+		//détermine la case la plus proche de la sortie
 		
-		if(!(*(this->terrain)).isBorder(x,y-1) && (*(*(this->terrain)).getTile(x,y-1)).getElement() != Obstacle){
-			if(calculDistanceOfTwoPoint(x,y-1) < distance ){
-				distance = calculDistanceOfTwoPoint(x,y-1);
-				mini =(&(*terrain).getTile(x,y-1))
+		if(!(*(this->terrain)).isBorder(x,y-1) && (*(*(this->terrain)).getTile(x,y-1)).getElement() != Element::Obstacle){
+			if(calculDistanceSortie(x,y-1) < distance ){
+				distance = calculDistanceSortie(x,y-1);
+				mini = terrain->getTile(x,y-1);
 			}
 		}
 		
+		// critical section
+		mini->lock();
+		while(mini->getElement()!=Element::Empty){}
+		//on doit changer les coordonnées de personne à l'aide d'un déplacement nord; sud ...
+		//fonction membre		deplacement.....
+		mini->setElement(Element::Person);
+		// ici c'est le x,y initial ??
+		(terrain->getTile(x,y))->setElement(Element::Person);
+		mini->unlock();
+
+
 		
-		*mini.lock()
-		if((*mini).getElement() == Empty){
-			
-		}
-		else (*mini).unlock();
-		
-		
-	}*/
+	}
 	
 }
 
