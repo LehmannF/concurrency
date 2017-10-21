@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.6)
 project(crowd_movement)
 
 #define platform independent variables
-SET(GCC_COMPILE_FLAGS "-g -ansi -Wall -Wextra -Wold-style-cast -Woverloaded-virtual -D_DEBUG_ -std=c++11")
+SET(GCC_COMPILE_FLAGS "-g -ansi -Wall -fpermissive -Wextra -Wold-style-cast -Woverloaded-virtual -D_DEBUG_ -std=c++11")
 add_definitions(${GCC_COMPILE_FLAGS}) 
 
 # dossier de build
@@ -28,3 +28,7 @@ add_test(${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/TerrainTests ${CMAKE_RUNTIME_OUTPUT_D
 add_executable(PersonneTests ${TESTS}/PersonneTests.cpp ${SOURCES}/Personne.cpp ${SOURCES}/Terrain.cpp ${SOURCES}/Tile.cpp ${SOURCES}/Obstacle.cpp)
 target_link_libraries(PersonneTests gtest gtest_main)
 add_test(${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/PersonneTests ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/PersonneTests)
+
+# Main executable
+add_executable(main ${SOURCES}/Personne.cpp ${SOURCES}/main.cpp ${SOURCES}/Obstacle.cpp ${SOURCES}/Terrain.cpp ${SOURCES}/Tile.cpp)
+target_link_libraries(main pthread)

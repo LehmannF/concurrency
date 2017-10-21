@@ -1,7 +1,6 @@
 #include "Terrain.h"
 
 
-
 #define at(x,y) at(x).at(y)
 #define _ROWS 128
 #define _COLUMNS 512
@@ -38,11 +37,12 @@ Tile* Terrain::getTile(int x, int y) {
 }
 
 void Terrain::addObstacle(Obstacle obstacle) {
-  
+
+
   for (int i = obstacle.getX(); i < obstacle.getWidth() ; ++i)
     for (int j = obstacle.getY(); j < obstacle.getLength(); ++j)
       terrain.at(i,j).setElement(Element::Obstacle);
-  
+
 }
 
 
