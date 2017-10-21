@@ -26,7 +26,7 @@ Personne::Personne(Terrain& terrain){
 void Personne::run(){
 	while(x != -1 && y!= -1){
 	  Tile* mini = terrain->getTile(x,y);
-		double distance = calculDistanceSortie(x,y);
+		double distance = 10000;
 		int xNext;
 		int yNext;
 
