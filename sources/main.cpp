@@ -7,7 +7,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
-#define NB 30
+#define NB 512
 
 void* task(Personne* p){
   p->run();
