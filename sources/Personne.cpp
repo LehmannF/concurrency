@@ -24,7 +24,7 @@ Personne::Personne(Terrain& terrain){
 }
 
 void* Personne::run(){
-	while(x != -1 && y!= -1){
+	while(x != 0 && y!= 0){
 	  Tile* mini = terrain->getTile(x,y);
 		double distance = 10000;
 		int xNext;
@@ -107,6 +107,10 @@ void* Personne::run(){
 		
 		x= xNext;
 		y= yNext;
+		
+		if(x==0 && y==0){
+			mini->setElement(Element::Empty);
+		}
 		
 		
 		mini->unlock();
