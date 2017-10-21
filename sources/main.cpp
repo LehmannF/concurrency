@@ -7,7 +7,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
-#define NB 100
+#define NB 30
 
 void* task(Personne* p){
   p->run();
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
   std::vector<Personne*> personnes(NB);
 
   for (int i = 0; i < NB; ++i) {
-    personnes.at(i) = new Personne(terrain);
+    personnes.at(i) = new Personne(terrain,i);
   }
 
   
