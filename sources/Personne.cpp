@@ -23,7 +23,7 @@ Personne::Personne(Terrain& terrain){
 	
 }
 
-void Personne::run(){
+void* Personne::run(){
 	while(x != -1 && y!= -1){
 	  Tile* mini = terrain->getTile(x,y);
 		double distance = 10000;
@@ -115,34 +115,10 @@ void Personne::run(){
 
 		
 	}
-	
+	return NULL;
 }
 
-bool deplacementNord(){
-	return false;
-	}
-bool deplacementSud(){
-	return false;
-	}
-bool deplacementOuest(){
-	return false;
-	}
-bool deplacementEst(){
-	return false;
-	}
-bool deplacementNordOuest(){
-	return false;
-	}
-bool deplacementNordEst(){
-	return false;
-	}
-bool deplacementSudOuest(){
-	return false;
-	}
-bool deplacementSudEst(){
-	return false;
-	}
-	
+
 double Personne::calculDistance(int x, int y){
 	return sqrt(std::pow((this->x -x),2)+std::pow((this->y -y),2));
 }
