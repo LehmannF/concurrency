@@ -7,7 +7,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
-#define NB 100
+#define NB 30
 
 void* task(Personne* p){
   p->run();
@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
   }
 
   for (int i = 0; i < NB; ++i) {
+    std::cout<< "over " << i << std::endl;
     pthread_join(threads.at(i), NULL);
   }
   
