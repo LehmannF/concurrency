@@ -36,6 +36,48 @@ void Personne::run(){
 				mini = terrain->getTile(x,y-1);
 			}
 		}
+		if(!(*(this->terrain)).isBorder(x-1,y-1) && (*(*(this->terrain)).getTile(x-1,y-1)).getElement() != Element::Obstacle){
+			if(calculDistanceSortie(x-1,y-1) < distance ){
+				distance = calculDistanceSortie(x-1,y-1);
+				mini = terrain->getTile(x-1,y-1);
+			}
+		}
+		if(!(*(this->terrain)).isBorder(x-1,y+1) && (*(*(this->terrain)).getTile(x-1,y+1)).getElement() != Element::Obstacle){
+			if(calculDistanceSortie(x-1,y+1) < distance ){
+				distance = calculDistanceSortie(x-1,y+1);
+				mini = terrain->getTile(x-1,y+1);
+			}
+		}
+		if(!(*(this->terrain)).isBorder(x-1,y) && (*(*(this->terrain)).getTile(x-1,y)).getElement() != Element::Obstacle){
+			if(calculDistanceSortie(x-1,y) < distance ){
+				distance = calculDistanceSortie(x-1,y);
+				mini = terrain->getTile(x-1,y);
+			}
+		}
+		if(!(*(this->terrain)).isBorder(x,y+1) && (*(*(this->terrain)).getTile(x,y+1)).getElement() != Element::Obstacle){
+			if(calculDistanceSortie(x,y+1) < distance ){
+				distance = calculDistanceSortie(x,y+1);
+				mini = terrain->getTile(x,y+1);
+			}
+		}
+		if(!(*(this->terrain)).isBorder(x+1,y-1) && (*(*(this->terrain)).getTile(x+1,y-1)).getElement() != Element::Obstacle){
+			if(calculDistanceSortie(x+1,y-1) < distance ){
+				distance = calculDistanceSortie(x+1,y-1);
+				mini = terrain->getTile(x+1,y-1);
+			}
+		}
+		if(!(*(this->terrain)).isBorder(x+1,y) && (*(*(this->terrain)).getTile(x+1,y)).getElement() != Element::Obstacle){
+			if(calculDistanceSortie(x+1,y) < distance ){
+				distance = calculDistanceSortie(x+1,y);
+				mini = terrain->getTile(x+1,y);
+			}
+		}
+		if(!(*(this->terrain)).isBorder(x+1,y+1) && (*(*(this->terrain)).getTile(x+1,y+1)).getElement() != Element::Obstacle){
+			if(calculDistanceSortie(x+1,y+1) < distance ){
+				distance = calculDistanceSortie(x+1,y+1);
+				mini = terrain->getTile(x+1,y+1);
+			}
+		}
 		
 		// critical section
 		mini->lock();
