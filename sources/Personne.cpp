@@ -27,6 +27,8 @@ void Personne::run(){
 	while(x != -1 && y!= -1){
 	  Tile* mini = terrain->getTile(x,y);
 		double distance = calculDistanceSortie(x,y);
+		int xNext;
+		int yNext;
 
 		//détermine la case la plus proche de la sortie
 		
@@ -34,48 +36,64 @@ void Personne::run(){
 			if(calculDistanceSortie(x,y-1) < distance ){
 				distance = calculDistanceSortie(x,y-1);
 				mini = terrain->getTile(x,y-1);
+				xNext = x;
+				yNext = y-1;
 			}
 		}
 		if(!(*(this->terrain)).isBorder(x-1,y-1) && (*(*(this->terrain)).getTile(x-1,y-1)).getElement() != Element::Obstacle){
 			if(calculDistanceSortie(x-1,y-1) < distance ){
 				distance = calculDistanceSortie(x-1,y-1);
 				mini = terrain->getTile(x-1,y-1);
+				xNext = x-1;
+				yNext = y-1;
 			}
 		}
 		if(!(*(this->terrain)).isBorder(x-1,y+1) && (*(*(this->terrain)).getTile(x-1,y+1)).getElement() != Element::Obstacle){
 			if(calculDistanceSortie(x-1,y+1) < distance ){
 				distance = calculDistanceSortie(x-1,y+1);
 				mini = terrain->getTile(x-1,y+1);
+				xNext = x-1;
+				yNext = y+1;
 			}
 		}
 		if(!(*(this->terrain)).isBorder(x-1,y) && (*(*(this->terrain)).getTile(x-1,y)).getElement() != Element::Obstacle){
 			if(calculDistanceSortie(x-1,y) < distance ){
 				distance = calculDistanceSortie(x-1,y);
 				mini = terrain->getTile(x-1,y);
+				xNext = x-1;
+				yNext = y;
 			}
 		}
 		if(!(*(this->terrain)).isBorder(x,y+1) && (*(*(this->terrain)).getTile(x,y+1)).getElement() != Element::Obstacle){
 			if(calculDistanceSortie(x,y+1) < distance ){
 				distance = calculDistanceSortie(x,y+1);
 				mini = terrain->getTile(x,y+1);
+				xNext = x;
+				yNext = y+1;
 			}
 		}
 		if(!(*(this->terrain)).isBorder(x+1,y-1) && (*(*(this->terrain)).getTile(x+1,y-1)).getElement() != Element::Obstacle){
 			if(calculDistanceSortie(x+1,y-1) < distance ){
 				distance = calculDistanceSortie(x+1,y-1);
 				mini = terrain->getTile(x+1,y-1);
+				xNext = x+1;
+				yNext = y-1;
 			}
 		}
 		if(!(*(this->terrain)).isBorder(x+1,y) && (*(*(this->terrain)).getTile(x+1,y)).getElement() != Element::Obstacle){
 			if(calculDistanceSortie(x+1,y) < distance ){
 				distance = calculDistanceSortie(x+1,y);
 				mini = terrain->getTile(x+1,y);
+				xNext = x+1;
+				yNext = y;
 			}
 		}
 		if(!(*(this->terrain)).isBorder(x+1,y+1) && (*(*(this->terrain)).getTile(x+1,y+1)).getElement() != Element::Obstacle){
 			if(calculDistanceSortie(x+1,y+1) < distance ){
 				distance = calculDistanceSortie(x+1,y+1);
 				mini = terrain->getTile(x+1,y+1);
+				xNext = x+1;
+				yNext = y+1;
 			}
 		}
 		
@@ -85,9 +103,14 @@ void Personne::run(){
 		//on doit changer les coordonnées de personne à l'aide d'un déplacement nord; sud ...
 		//fonction membre		deplacement.....
 		mini->setElement(Element::Person);
-		// ici c'est le x,y initial ??
-		(terrain->getTile(x,y))->setElement(Element::Person);
+		(terrain->getTile(x,y))->setElement(Element::Empty);
+		
+		x= xNext;
+		y= yNext;
+		
+		
 		mini->unlock();
+		// end of critical section
 
 
 		
