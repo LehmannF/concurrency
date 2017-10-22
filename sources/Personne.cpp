@@ -34,79 +34,88 @@ void* Personne::run(){
 		int yNext;
 
 		//détermine la case la plus proche de la sortie
-		std::cout << "HERE1" << std::endl;
+
+		
 		if(!(*(this->terrain)).isBorder(x,y-1)){
-		  std::cout << "HERE11" << std::endl;
-		  if((*(*(this->terrain)).getTile(x,y-1)).getElement() != Element::Obstacle){
-			if(calculDistanceSortie(x,y-1) < distance ){
-				distance = calculDistanceSortie(x,y-1);
-				mini = terrain->getTile(x,y-1);
-				xNext = x;
-				yNext = y-1;
+			if((*(*(this->terrain)).getTile(x,y-1)).getElement() != Element::Obstacle){
+				if(calculDistanceSortie(x,y-1) < distance ){
+					distance = calculDistanceSortie(x,y-1);
+					mini = terrain->getTile(x,y-1);
+					xNext = x;
+					yNext = y-1;
+				}
 			}
 		}
-		}
-		std::cout << "HERE2" << std::endl;
 		if(!(*(this->terrain)).isBorder(x-1,y-1)){
-		  		std::cout << "HERE21" << std::endl;
-		  if((*(*(this->terrain)).getTile(x-1,y-1)).getElement() != Element::Obstacle){
-		    		std::cout << "HERE22" << std::endl;
-			if(calculDistanceSortie(x-1,y-1) < distance ){
-				distance = calculDistanceSortie(x-1,y-1);
-				mini = terrain->getTile(x-1,y-1);
-				xNext = x-1;
-				yNext = y-1;
-			}
-		  }}
-		if(!(*(this->terrain)).isBorder(x-1,y+1) && (*(*(this->terrain)).getTile(x-1,y+1)).getElement() != Element::Obstacle){
-			if(calculDistanceSortie(x-1,y+1) < distance ){
-				distance = calculDistanceSortie(x-1,y+1);
-				mini = terrain->getTile(x-1,y+1);
-				xNext = x-1;
-				yNext = y+1;
+			if((*(*(this->terrain)).getTile(x-1,y-1)).getElement() != Element::Obstacle){
+				if(calculDistanceSortie(x-1,y-1) < distance ){
+					distance = calculDistanceSortie(x-1,y-1);
+					mini = terrain->getTile(x-1,y-1);
+					xNext = x-1;
+					yNext = y-1;
+				}
 			}
 		}
-		if(!(*(this->terrain)).isBorder(x-1,y) && (*(*(this->terrain)).getTile(x-1,y)).getElement() != Element::Obstacle){
-			if(calculDistanceSortie(x-1,y) < distance ){
-				distance = calculDistanceSortie(x-1,y);
-				mini = terrain->getTile(x-1,y);
-				xNext = x-1;
-				yNext = y;
+		if(!(*(this->terrain)).isBorder(x-1,y+1)){
+			if((*(*(this->terrain)).getTile(x-1,y+1)).getElement() != Element::Obstacle){
+				if(calculDistanceSortie(x-1,y+1) < distance ){
+					distance = calculDistanceSortie(x-1,y+1);
+					mini = terrain->getTile(x-1,y+1);
+					xNext = x-1;
+					yNext = y+1;
+				}
+
 			}
 		}
-		if(!(*(this->terrain)).isBorder(x,y+1) && (*(*(this->terrain)).getTile(x,y+1)).getElement() != Element::Obstacle){
-			if(calculDistanceSortie(x,y+1) < distance ){
-				distance = calculDistanceSortie(x,y+1);
-				mini = terrain->getTile(x,y+1);
-				xNext = x;
-				yNext = y+1;
+		if(!(*(this->terrain)).isBorder(x-1,y)){
+			if((*(*(this->terrain)).getTile(x-1,y)).getElement() != Element::Obstacle){
+				if(calculDistanceSortie(x-1,y) < distance ){
+					distance = calculDistanceSortie(x-1,y);
+					mini = terrain->getTile(x-1,y);
+					xNext = x-1;
+					yNext = y;
+				}
 			}
 		}
-		std::cout << "HERE3" << std::endl;
+		if(!(*(this->terrain)).isBorder(x,y+1)){
+			if((*(*(this->terrain)).getTile(x,y+1)).getElement() != Element::Obstacle){
+				if(calculDistanceSortie(x,y+1) < distance ){
+					distance = calculDistanceSortie(x,y+1);
+					mini = terrain->getTile(x,y+1);
+					xNext = x;
+					yNext = y+1;
+				}
+			}
+		}
 		if(!(*(this->terrain)).isBorder(x+1,y-1)){
-		  		std::cout << "HERE31" << std::endl;
-		   if((*(*(this->terrain)).getTile(x+1,y-1)).getElement() != Element::Obstacle){
-			if(calculDistanceSortie(x+1,y-1) < distance ){
-				distance = calculDistanceSortie(x+1,y-1);
-				mini = terrain->getTile(x+1,y-1);
-				xNext = x+1;
-				yNext = y-1;
-			}
-		   }}
-		if(!(*(this->terrain)).isBorder(x+1,y) && (*(*(this->terrain)).getTile(x+1,y)).getElement() != Element::Obstacle){
-			if(calculDistanceSortie(x+1,y) < distance ){
-				distance = calculDistanceSortie(x+1,y);
-				mini = terrain->getTile(x+1,y);
-				xNext = x+1;
-				yNext = y;
+			if((*(*(this->terrain)).getTile(x+1,y-1)).getElement() != Element::Obstacle){
+				if(calculDistanceSortie(x+1,y-1) < distance ){
+					distance = calculDistanceSortie(x+1,y-1);
+					mini = terrain->getTile(x+1,y-1);
+					xNext = x+1;
+					yNext = y-1;
+				}
 			}
 		}
-		if(!(*(this->terrain)).isBorder(x+1,y+1) && (*(*(this->terrain)).getTile(x+1,y+1)).getElement() != Element::Obstacle){
-			if(calculDistanceSortie(x+1,y+1) < distance ){
-				distance = calculDistanceSortie(x+1,y+1);
-				mini = terrain->getTile(x+1,y+1);
-				xNext = x+1;
-				yNext = y+1;
+		if(!(*(this->terrain)).isBorder(x+1,y)){
+			if((*(*(this->terrain)).getTile(x+1,y)).getElement() != Element::Obstacle){
+				if(calculDistanceSortie(x+1,y) < distance ){
+					distance = calculDistanceSortie(x+1,y);
+					mini = terrain->getTile(x+1,y);
+					xNext = x+1;
+					yNext = y;
+				}
+
+			}
+		}
+		if(!(*(this->terrain)).isBorder(x+1,y+1)){
+			if((*(*(this->terrain)).getTile(x+1,y+1)).getElement() != Element::Obstacle){
+				if(calculDistanceSortie(x+1,y+1) < distance ){
+					distance = calculDistanceSortie(x+1,y+1);
+					mini = terrain->getTile(x+1,y+1);
+					xNext = x+1;
+					yNext = y+1;
+				}
 			}
 		}
 		
