@@ -9,8 +9,8 @@
 
 #define NB 512
 
-void* task(Personne* p){
-  p->run();
+void* task(void* p){
+  static_cast<Personne*>(p)->run();
   return NULL;
 }
 
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
   std::cout << "Running" << std::endl;
 
   for (int i = 0; i < NB; ++i) {
-    pthread_create( &(threads.at(i)), NULL, task,(void*) personnes.at(i));
+    pthread_create( &(threads.at(i)), NULL, task,personnes.at(i));
   }
 
   for (int i = 0; i < NB; ++i) {

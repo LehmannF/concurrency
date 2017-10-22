@@ -119,10 +119,10 @@ void* Personne::run(){
 			}
 		}
 		
-		std::cout << "Personne n°" <<id << " veut aller en x:"<< xNext<<" y:"<<yNext<<std::endl;
+
 		// critical section
 		mini->lock();
-		std::cout << "Personne n°" <<id <<" à locké x:"<< xNext<<" y:"<<yNext<<std::endl;
+
 		while(mini->getElement()!=Element::Empty){}
 		//on doit changer les coordonnées de personne à l'aide d'un déplacement nord; sud ...
 		//fonction membre		deplacement.....
@@ -135,12 +135,12 @@ void* Personne::run(){
 		if(x==0 && y==0){
 			mini->setElement(Element::Empty);
 		}
-		std::cout << "Personne n°" <<id <<" s'est déplacé en x:"<< xNext<<" y:"<<yNext<<std::endl;
+
 		
 		mini->unlock();
 		// end of critical section
 		
-		std::cout << "Personne n°" <<id <<" à délocké x:"<< xNext<<" y:"<<yNext<<std::endl;
+
 
 
 		
