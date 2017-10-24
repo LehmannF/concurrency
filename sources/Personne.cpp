@@ -27,7 +27,7 @@ Personne::Personne(Terrain& terrain, int id){
 }
 
 void* Personne::run(){
-	while(x != 0 || y!= 0){
+	while((x != 0 || y!= 0) && (x != 0 || y!= 1) && (x != 1 || y!= 0)){
 	  Tile* mini = terrain->getTile(x,y);
 		double distance = 10000;
 		int xNext;
@@ -56,7 +56,7 @@ void* Personne::run(){
 		x= xNext;
 		y= yNext;
 		
-		if(x==0 && y==0){
+		if((x==0 && y==0) || (x==0 && y==1) || (x==1 && y==0)){
 			mini->setElement(Element::Empty);
 		}
 
@@ -77,15 +77,33 @@ double Personne::calculDistance(int x, int y){
 	return sqrt(std::pow((this->x -x),2)+std::pow((this->y -y),2));
 }
 
-double Personne::calculDistanceSortie(int x, int y){
+double Personne::calculDistanceSortie00(int x, int y){
 	return sqrt(std::pow((0 -x),2)+std::pow((0 -y),2));
+}
+double Personne::calculDistanceSortie01(int x, int y){
+	return sqrt(std::pow((0 -x),2)+std::pow((1 -y),2));
+}
+double Personne::calculDistanceSortie10(int x, int y){
+	return sqrt(std::pow((1 -x),2)+std::pow((0 -y),2));
 }
 
 void Personne::checkTile(int i,int j,int& xNext,int& yNext,double& distance,Tile*& mini){
 	if(!(*(this->terrain)).isBorder(i,j)){
 			if((*(*(this->terrain)).getTile(i,j)).getElement() != Element::Obstacle){
-				if(calculDistanceSortie(i,j) < distance ){
-					distance = calculDistanceSortie(i,j);
+				if(calculDistanceSortie00(i,j) < distance ){
+					distance = calculDistanceSortie00(i,j);
+					mini = terrain->getTile(i,j);
+					xNext = i;
+					yNext = j;
+				}
+				if(calculDistanceSortie01(i,j) < distance ){
+					distance = calculDistanceSortie01(i,j);
+					mini = terrain->getTile(i,j);
+					xNext = i;
+					yNext = j;
+				}
+				if(calculDistanceSortie10(i,j) < distance ){
+					distance = calculDistanceSortie10(i,j);
 					mini = terrain->getTile(i,j);
 					xNext = i;
 					yNext = j;

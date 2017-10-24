@@ -21,7 +21,9 @@ class Personne{
 	void* run();
 	
 	double calculDistance(int x, int y);
-	double calculDistanceSortie(int x, int y);
+	double calculDistanceSortie00(int x, int y);
+	double calculDistanceSortie01(int x, int y);
+	double calculDistanceSortie10(int x, int y);
 };
 
 #endif
