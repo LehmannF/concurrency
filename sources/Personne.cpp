@@ -34,14 +34,14 @@ void* Personne::run(){
 		int yNext;
 
 		//détermine la case la plus proche de la sortie
-		checkTile(x,y-1,xNext,yNext,distance,mini);
-		checkTile(x-1,y-1,xNext,yNext,distance,mini);
-		checkTile(x-1,y+1,xNext,yNext,distance,mini);
-		checkTile(x-1,y,xNext,yNext,distance,mini);
-		checkTile(x,y+1,xNext,yNext,distance,mini);
-		checkTile(x+1,y-1,xNext,yNext,distance,mini);
-		checkTile(x+1,y,xNext,yNext,distance,mini);
-		checkTile(x+1,y+1,xNext,yNext,distance,mini);
+		checkTile(x,y-1,xNext,yNext,distance,&mini);
+		checkTile(x-1,y-1,xNext,yNext,distance,&mini);
+		checkTile(x-1,y+1,xNext,yNext,distance,&mini);
+		checkTile(x-1,y,xNext,yNext,distance,&mini);
+		checkTile(x,y+1,xNext,yNext,distance,&mini);
+		checkTile(x+1,y-1,xNext,yNext,distance,&mini);
+		checkTile(x+1,y,xNext,yNext,distance,&mini);
+		checkTile(x+1,y+1,xNext,yNext,distance,&mini);
 
 
 		// critical section
@@ -50,20 +50,19 @@ void* Personne::run(){
 		while(mini->getElement()!=Element::Empty){
             pthread_cond_wait(mini->getCondition(), mini->getMutex());
         }
-		//on doit changer les coordonnées de personne à l'aide d'un déplacement nord; sud ...
-		//fonction membre		deplacement.....
+		
 		mini->setElement(Element::Person);
 		(terrain->getTile(x,y))->removePerson();
 		
 		x= xNext;
 		y= yNext;
 		
-		if((x==0 && y==0) || (x==0 && y==1) || (x==1 && y==0)){
-			mini->removePerson();
-		}
-
-		
+        
 		mini->unlock();
+        
+        if((x==0 && y==0) || (x==0 && y==1) || (x==1 && y==0)){
+            mini->removePerson();
+        }
 		// end of critical section
 		
 
@@ -89,24 +88,24 @@ double Personne::calculDistanceSortie10(int x, int y){
 	return sqrt(std::pow((1 -x),2)+std::pow((0 -y),2));
 }
 
-void Personne::checkTile(int i,int j,int& xNext,int& yNext,double& distance,Tile*& mini){
+void Personne::checkTile(int i,int j,int& xNext,int& yNext,double& distance,Tile** mini){
 	if(!(*(this->terrain)).isBorder(i,j)){
 			if((*(*(this->terrain)).getTile(i,j)).getElement() != Element::Obstacle){
 				if(calculDistanceSortie00(i,j) < distance ){
 					distance = calculDistanceSortie00(i,j);
-					mini = terrain->getTile(i,j);
+					*mini = terrain->getTile(i,j);
 					xNext = i;
 					yNext = j;
 				}
 				if(calculDistanceSortie01(i,j) < distance ){
 					distance = calculDistanceSortie01(i,j);
-					mini = terrain->getTile(i,j);
+					*mini = terrain->getTile(i,j);
 					xNext = i;
 					yNext = j;
 				}
 				if(calculDistanceSortie10(i,j) < distance ){
 					distance = calculDistanceSortie10(i,j);
-					mini = terrain->getTile(i,j);
+					*mini = terrain->getTile(i,j);
 					xNext = i;
 					yNext = j;
 				}

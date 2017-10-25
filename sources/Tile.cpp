@@ -17,10 +17,8 @@ void Tile::setElement(Element element) {
 
 void Tile::removePerson() {
     pthread_mutex_lock(&mutex);
-    if (Element::Obstacle != element) {
-        element = Element::Empty;
-        pthread_cond_signal(&condition);
-    }
+    element = Element::Empty;
+    pthread_cond_broadcast(&condition);
     pthread_mutex_unlock(&mutex);
 }
 

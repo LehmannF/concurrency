@@ -13,7 +13,7 @@ class Personne{
 	int id;
 	int x;
 	int y;
-	void checkTile(int i,int j,int& xNext,int& yNext,double& distance,Tile*& mini);
+	void checkTile(int i,int j,int& xNext,int& yNext,double& distance,Tile** mini);
 	
 	public:
 	Personne(Terrain& terrain, int id);
