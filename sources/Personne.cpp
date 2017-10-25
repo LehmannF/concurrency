@@ -47,17 +47,19 @@ void* Personne::run(){
 		// critical section
 		mini->lock();
 
-		while(mini->getElement()!=Element::Empty){}
+		while(mini->getElement()!=Element::Empty){
+            pthread_cond_wait(mini->getCondition(), mini->getMutex());
+        }
 		//on doit changer les coordonnées de personne à l'aide d'un déplacement nord; sud ...
 		//fonction membre		deplacement.....
 		mini->setElement(Element::Person);
-		(terrain->getTile(x,y))->setElement(Element::Empty);
+		(terrain->getTile(x,y))->removePerson();
 		
 		x= xNext;
 		y= yNext;
 		
 		if((x==0 && y==0) || (x==0 && y==1) || (x==1 && y==0)){
-			mini->setElement(Element::Empty);
+			mini->removePerson();
 		}
 
 		
