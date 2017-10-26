@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
       sum += duration[i];
     }
     double mean = sum/(nb_mesure-2);
-    std::cout << "Le temps d'éxécution est de de" << mean  << " secondes" << std::endl;
+    std::cout << "Le temps d'éxécution est de" << mean  << " secondes" << std::endl;
     }
   
   return 0;
