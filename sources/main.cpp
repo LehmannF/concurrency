@@ -8,8 +8,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <string>
-
-#include <stdio.h>
+#include <cmath>
 
 
 
@@ -28,7 +27,7 @@ int main(int argc, char *argv[])
   Terrain terrain;
   Obstacle obstacle;
   terrain.addObstacle(obstacle);
-  int nb_threads;
+  int nb_threads = 512;
   int nb_mesure= 1;
   
   for(int i=1; i < argc; i++) {
@@ -39,8 +38,10 @@ int main(int argc, char *argv[])
     }
 
 
-    if (std::string(argv[i])=="-p")
-      nb_threads = atoi(argv[i+1]);
+    if (std::string(argv[i])=="-p") {
+      if ( atoi(argv[i+1]) <= 9 && atoi(argv[i+1])>=0)
+	nb_threads = pow(2,atoi(argv[i+1]));
+    }
   }
 
   
