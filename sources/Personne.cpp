@@ -27,7 +27,7 @@ Personne::Personne(Terrain& terrain, int id){
 }
 
 void* Personne::run(){
-	while((x != 0 || y!= 0) && (x != 0 || y!= 1) && (x != 1 || y!= 0)){
+	do{
 	  Tile* mini = terrain->getTile(x,y);
 		double distance = 10000;
 		int xNext;
@@ -46,19 +46,24 @@ void* Personne::run(){
 
 		// critical section
 		mini->lock();
+		
+		//std::cout << "Personne n°" << id << "à locké "<< xNext << " "<<yNext<< std::endl;
 
 		while(mini->getElement()!=Element::Empty){
             pthread_cond_wait(mini->getCondition(), mini->getMutex());
         }
 		
 		mini->setElement(Element::Person);
+		//std::cout << "Personne n°" << id << "s'est déplacé en "<< xNext << " "<<yNext<< std::endl;
 		(terrain->getTile(x,y))->removePerson();
+		//std::cout << "Personne n°" << id << "a liberé "<< x << " "<<y<< std::endl;
 		
 		x= xNext;
 		y= yNext;
 		
         
 		mini->unlock();
+		//std::cout << "Personne n°" << id << "à délocké "<< xNext << " "<<yNext<< std::endl;
         
         if((x==0 && y==0) || (x==0 && y==1) || (x==1 && y==0)){
             mini->removePerson();
@@ -69,7 +74,7 @@ void* Personne::run(){
 
 
 		
-	}
+	}while((x != 0 || y!= 0) && (x != 0 || y!= 1) && (x != 1 || y!= 0));
 	return NULL;
 }
 

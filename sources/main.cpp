@@ -16,7 +16,6 @@ void* task(void* p){
 
 int main(int argc, char *argv[])
 {
-  
   Terrain terrain;
   Obstacle obstacle;
   //terrain.addObstacle(obstacle);
@@ -46,6 +45,6 @@ int main(int argc, char *argv[])
   for (int i = 0; i < NB; ++i) {
     delete personnes.at(i);
   }
-
+  
   return 0;
 }
