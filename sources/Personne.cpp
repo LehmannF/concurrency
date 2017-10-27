@@ -21,9 +21,7 @@ Personne::Personne(Terrain& terrain, int id){
 	y= chooseY(generator);
 	} while((*(*(this->terrain)).getTile(x,y)).getElement() != Element::Empty);
 	(*(*(this->terrain)).getTile(x,y)).setElement(Element::Person);
-	
-	std::cout << "Personne n°" <<id<< " implanté en x:"<<x<< " y:"<<y<<std::endl;
-	
+		
 }
 
 void* Personne::run(){

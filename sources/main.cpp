@@ -20,9 +20,10 @@ void* task(void* p){
 int main(int argc, char *argv[])
 {
 
-
+  struct rusage usage;
   clock_t start, end;
-  double duration[5];
+  double CPUTime[5];
+  double responseTime[5];
   bool measure = false;
   Terrain terrain;
   Obstacle obstacle;
@@ -55,12 +56,14 @@ int main(int argc, char *argv[])
       personnes.at(i) = new Personne(terrain,i);
     }
     
-    if (!measure)
+    if (!measure) {
       std::cout << "Running" << std::endl;
-    
-    if(measure)
+    }
+    else {
       start = clock();
-    
+      getrusage(RUSAGE_SELF, &usage);
+    }
+      
     for (int i = 0; i < nb_threads; ++i) {
       pthread_create( &(threads.at(i)), NULL, task,personnes.at(i));
     }
@@ -73,10 +76,13 @@ int main(int argc, char *argv[])
       pthread_join(threads.at(i), NULL);
     }
 
-    if (measure)
-      end = clock();
+      if (measure) {
+          end = clock();
+          getrusage(RUSAGE_SELF, &usage);
+      }
 
-    duration[j] = (double)(end-start)/CLOCKS_PER_SEC;
+    responseTime[j] = (double)(end-start)/CLOCKS_PER_SEC;
+      CPUTime[j] = ((long int)usage.ru_utime.tv_sec) + ((long int)usage.ru_stime.tv_sec);
 
     if (!measure)
       std::cout << "End" << std::endl;
@@ -89,10 +95,19 @@ int main(int argc, char *argv[])
   if(measure) {
     double sum = 0;
     for(int i=1; i < nb_mesure-1; i++) {
-      sum += duration[i];
+      sum += responseTime[i];
     }
     double mean = sum/(nb_mesure-2);
-    std::cout << "Le temps d'éxécution est de" << mean  << " secondes" << std::endl;
+    std::cout << "Le temps de reponse est de " << mean  << " secondes" << std::endl;
+     
+      
+      sum = 0;
+      for(int i=1; i < nb_mesure-1; i++) {
+          sum += CPUTime[i];
+      }
+      mean = sum/(nb_mesure-2);
+      std::cout << "Le consommation du cpu est de " << mean  << " secondes" << std::endl;
+
     }
   
   return 0;
