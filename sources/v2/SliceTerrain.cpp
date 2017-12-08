@@ -22,7 +22,7 @@ void SliceTerrain::run() {
                 }
                 else if (terrain.getTile(x, y)->getElement() == Element::Person) {
                     int xNext, yNext;
-                    double distance = std::numeric_limits<double>::max();
+                    double distance = 10000;
                     checkTile(x, y - 1, xNext, yNext, distance);
                     checkTile(x - 1, y - 1, xNext, yNext, distance);
                     checkTile(x - 1, y + 1, xNext, yNext, distance);
