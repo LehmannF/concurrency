@@ -36,5 +36,5 @@ add_executable(main ${SOURCESV1}/Personne.cpp ${SOURCESV1}/main.cpp ${SOURCESV1}
 target_link_libraries(main pthread)
 
 # Main executable
-add_executable(main2 ${SOURCESV2}/main.cpp ${SOURCESV2}/Obstacle.cpp ${SOURCESV2}/Terrain.cpp ${SOURCESV2}/Tile.cpp)
+add_executable(main2 ${SOURCESV2}/main.cpp ${SOURCESV2}/Obstacle.cpp ${SOURCESV2}/Terrain.cpp ${SOURCESV2}/Tile.cpp ${SOURCESV2}/SliceTerrain.cpp)
 target_link_libraries(main2 pthread)
