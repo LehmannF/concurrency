@@ -1,8 +1,8 @@
 #include <iostream>
 #include "gtest/gtest.h"
 
-#include "../sources/Personne.h"
-#include "../sources/Terrain.h"
+#include "../sources/v1/Personne.h"
+#include "../sources/v1/Terrain.h"
 
 TEST(Personne, defineContext){
 	Terrain terrain;

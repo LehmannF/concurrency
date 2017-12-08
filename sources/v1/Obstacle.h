@@ -3,6 +3,8 @@
 
 class Obstacle
 {
+
+
  public:
   Obstacle();
   int getWidth();
