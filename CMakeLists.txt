@@ -13,7 +13,7 @@ set(SOURCESV1 "sources/v1")
 set(SOURCESV2 "sources/v2")
 
 # dossier contenant les tests
-set(TESTV1S "tests/v1")
+set(TESTV1S "tests")
 
 
 # Ajout de google test pour les tests unitaires
