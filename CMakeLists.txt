@@ -22,18 +22,21 @@ enable_testing()
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 # Test de terrain
-add_executable(TerrainTests ${TESTV1S}/TerrainTests.cpp ${SOURCESV1}/Obstacle.cpp ${SOURCESV1}/Terrain.cpp ${SOURCESV1}/Tile.cpp)
-target_link_libraries(TerrainTests gtest gtest_main)
-add_test(${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/TerrainTests ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/TerrainTests)
+# add_executable(TerrainTests ${TESTV1S}/TerrainTests.cpp ${SOURCESV1}/Obstacle.cpp ${SOURCESV1}/Terrain.cpp ${SOURCESV1}/Tile.cpp)
+# target_link_libraries(TerrainTests gtest gtest_main)
+# add_test(${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/TerrainTests ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/TerrainTests)
 
 # Test de Personne
-add_executable(PersonneTests ${TESTV1S}/PersonneTests.cpp ${SOURCESV1}/Personne.cpp ${SOURCESV1}/Terrain.cpp ${SOURCESV1}/Tile.cpp ${SOURCESV1}/Obstacle.cpp)
-target_link_libraries(PersonneTests gtest gtest_main)
-add_test(${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/PersonneTests ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/PersonneTests)
+# add_executable(PersonneTests ${TESTV1S}/PersonneTests.cpp ${SOURCESV1}/Personne.cpp ${SOURCESV1}/Terrain.cpp ${SOURCESV1}/Tile.cpp ${SOURCESV1}/Obstacle.cpp)
+# target_link_libraries(PersonneTests gtest gtest_main)
+# add_test(${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/PersonneTests ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/PersonneTests)
+
+add_executable(main sources/main.cpp)
+
 
 # Main executable
-add_executable(main ${SOURCESV1}/Personne.cpp ${SOURCESV1}/main.cpp ${SOURCESV1}/Obstacle.cpp ${SOURCESV1}/Terrain.cpp ${SOURCESV1}/Tile.cpp)
-target_link_libraries(main pthread)
+add_executable(main1 ${SOURCESV1}/Personne.cpp ${SOURCESV1}/main.cpp ${SOURCESV1}/Obstacle.cpp ${SOURCESV1}/Terrain.cpp ${SOURCESV1}/Tile.cpp)
+target_link_libraries(main1 pthread)
 
 # Main executable
 add_executable(main2 ${SOURCESV2}/main.cpp ${SOURCESV2}/Obstacle.cpp ${SOURCESV2}/Terrain.cpp ${SOURCESV2}/Tile.cpp ${SOURCESV2}/SliceTerrain.cpp)

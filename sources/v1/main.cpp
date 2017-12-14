@@ -33,12 +33,13 @@ int main(int argc, char *argv[])
   int nb_mesure= 1;
   
   for(int i=1; i < argc; i++) {
+
+      std::cout << argv[i] << std::endl;
+
     if (std::string(argv[i])=="-m") {
       measure = true;
       nb_mesure= 5;
-      
     }
-
 
     if (std::string(argv[i])=="-p") {
       if ( atoi(argv[i+1]) <= 9 && atoi(argv[i+1])>=0)
