@@ -20,9 +20,11 @@ class Terrain
   void addObstacle(Obstacle);
     bool allCrowdEvacuate();
     void incrementCompteurPersonOut();
+    int getNumberOfPerson();
 private:
   std::vector<std::vector<Tile> > terrain;
     int compteurPersonne;
+
 
 
 };

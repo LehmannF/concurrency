@@ -71,6 +71,8 @@ int main(int argc, char *argv[]) {
         }
 
         for (int i = 0; i < NB_SLIDE; ++i) {
+            if (measure)
+                std::cout << "created "  << i << std::endl;
             pthread_create(&(threads.at(i)), NULL, task, slices.at(i));
         }
 
@@ -93,10 +95,11 @@ int main(int argc, char *argv[]) {
         if (!measure)
             std::cout << "End" << std::endl;
 
-        /*for (int k = 0; k < slices.size(); ++k) {
+        for (int k = 0; k < slices.size(); ++k) {
             delete slices.at(k);
             slices.erase(slices.begin(), slices.begin()+4);
-        }*/
+            threads.erase(threads.begin(), threads.end());
+        }
 
     }
 

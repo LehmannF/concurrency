@@ -73,3 +73,7 @@ void Terrain::incrementCompteurPersonOut() {
 bool Terrain::allCrowdEvacuate() {
   return compteurPersonne == 0;
 }
+
+int Terrain::getNumberOfPerson(){
+  return this->compteurPersonne;
+}
