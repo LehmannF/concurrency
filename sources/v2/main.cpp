@@ -29,17 +29,14 @@ int main(int argc, char *argv[]) {
 
     for(int i=1; i < argc && argv[i]!=NULL; i++) {
 
-        std::cout << argv[i] << std::endl;
 
         if (std::string(argv[i])=="-m") {
-            std::cout << argv[i] << std::endl;
             measure = true;
             nb_mesure= 5;
         }
 
 
         if (std::string(argv[i])=="-p") {
-            std::cout << argv[i] << std::endl;
             if ( atoi(argv[i+1]) <= 9 && atoi(argv[i+1])>=0)
                 nb_persons = pow(2,atoi(argv[i+1]));
         }
@@ -53,12 +50,17 @@ int main(int argc, char *argv[]) {
         std::vector<pthread_t> threads(NB_SLIDE);
 
         Terrain terrain(nb_persons);
-        std::cout << terrain.allCrowdEvacuate() << std::endl;
+        //std::cout << terrain.getNumberOfPerson() << std::endl;
 
         slices.push_back(new SliceTerrain(0, 128, 128, terrain));
         slices.push_back(new SliceTerrain(128, 256, 128, terrain));
         slices.push_back(new SliceTerrain(256, 384, 128, terrain));
         slices.push_back(new SliceTerrain(384, 512, 128, terrain));
+
+        threads.push_back(*(new pthread_t));
+        threads.push_back(*(new pthread_t));
+        threads.push_back(*(new pthread_t));
+        threads.push_back(*(new pthread_t));
 
         // Lancement des threads
 
@@ -71,16 +73,16 @@ int main(int argc, char *argv[]) {
         }
 
         for (int i = 0; i < NB_SLIDE; ++i) {
-            if (measure)
+            if (!measure)
                 std::cout << "created "  << i << std::endl;
             pthread_create(&(threads.at(i)), NULL, task, slices.at(i));
         }
 
 
-        for (int i = 0; i < NB_SLIDE; ++i) {
-            if (measure)
-                std::cout<< "over " << i << std::endl;
-            pthread_join(threads.at(i), NULL);
+        for (int h = 0; h < NB_SLIDE; ++h) {
+            if (!measure)
+                std::cout<< "over " << h << std::endl;
+            pthread_join(threads.at(h), NULL);
 
         }
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/florian/Desktop/concurrency/gtest-1.8.0
+# Install script for directory: /home/florian/Bureau/projet_conc/concurrency/gtest-1.8.0
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/florian/Desktop/concurrency/gtest-1.8.0/googlemock/cmake_install.cmake")
+  include("/home/florian/Bureau/projet_conc/concurrency/gtest-1.8.0/googlemock/cmake_install.cmake")
 
 endif()
 

@@ -14,7 +14,7 @@ SliceTerrain::SliceTerrain(int topLeftX, int topRightX, int height, Terrain& ter
 
 void SliceTerrain::run() {
     while (!terrain.allCrowdEvacuate()) {
-        std::cout << terrain.getNumberOfPerson() << std::endl;
+        //std::cout << terrain.getNumberOfPerson() << std::endl;
         for (int y = 0; y < height; ++y) {
             for (int x = topLeftX; x < topRightX; ++x) {
                 if (((x == 0 && y == 0) || (x == 0 && y == 1) ||(x == 1 && y == 0)) && terrain.getTile(x, y)->getElement() == Element::Person) {
@@ -92,5 +92,5 @@ void SliceTerrain::move(int x, int y, int xNext, int yNext) {
 
     terrain.getTile(xNext,yNext)->setElement(Element::Person);
     terrain.getTile(x,y)->setElement(Element::Empty);
-    std::cout << "La personne s'est déplacée de "<< "(" << x << "," << y << ")" <<  "en" << "(" << xNext << "," << yNext << ")" << std::endl;
+    //std::cout << "La personne s'est déplacée de "<< "(" << x << "," << y << ")" <<  "en" << "(" << xNext << "," << yNext << ")" << std::endl;
 }
