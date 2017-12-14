@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
     for(int i=1; i < argc; i++) {
 
         if (strcmp("-t0", argv[i])==0) {
+            std::cout << "version 1" << std::endl;
             char * argv_tmp[10] = {"main1"};
             for (int j = 1; j < argc; ++j) {
                 //std::cout << argv[j] << std::endl;
@@ -20,6 +21,7 @@ int main(int argc, char *argv[])
         }
 
         if (strcmp("-t1", argv[i])==0) {
+            std::cout << "version 2" << std::endl;
             char * argv_tmp[10] = {"main2"};
             for (int j = 1; j < argc; ++j) {
                 //std::cout << argv[j] << std::endl;
