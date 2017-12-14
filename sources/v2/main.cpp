@@ -21,8 +21,8 @@ int main(int argc, char *argv[]) {
 
     struct rusage usage;
     clock_t start, end;
-    double CPUTime[5];
-    double responseTime[5];
+    double CPUTime[5] = {0};
+    double responseTime[5] = {0};
     bool measure = false;
     int nb_mesure= 1;
     int nb_persons= 512;
@@ -32,7 +32,6 @@ int main(int argc, char *argv[]) {
 
         if (std::string(argv[i])=="-m") {
             measure = true;
-            nb_mesure= 5;
         }
 
 
@@ -42,6 +41,7 @@ int main(int argc, char *argv[]) {
         }
 
     }
+
 
 
     for(int j=0; j < nb_mesure; j++) {
@@ -65,6 +65,7 @@ int main(int argc, char *argv[]) {
             start = clock();
             getrusage(RUSAGE_SELF, &usage);
         }
+
 
         for (int i = 0; i < NB_SLIDE; ++i) {
             if (!measure)
@@ -104,7 +105,7 @@ int main(int argc, char *argv[]) {
         for(int i=1; i < nb_mesure-1; i++) {
             sum += responseTime[i];
         }
-        double mean = sum/(nb_mesure-2);
+        double mean = responseTime[0];
         std::cout << "Le temps de reponse est de " << mean  << " secondes" << std::endl;
 
 
@@ -112,7 +113,7 @@ int main(int argc, char *argv[]) {
         for(int i=1; i < nb_mesure-1; i++) {
             sum += CPUTime[i];
         }
-        mean = sum/(nb_mesure-2);
+        mean = CPUTime[0];
         std::cout << "Le consommation du cpu est de " << mean  << " secondes" << std::endl;
 
     }
